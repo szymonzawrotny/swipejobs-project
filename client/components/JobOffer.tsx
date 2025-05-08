@@ -11,7 +11,7 @@ interface JobOfferProps {
 
 const JobOffer = ({ item, navigation }: JobOfferProps) => {
   return (
-    <View className="mt-[50px] w-[95%] h-[40vh] mb-[25px] bg-[lightgray] p-[10px] rounded-[10px]">
+    <View className="mt-[50px] w-[95%] h-[40vh] mb-[10px] bg-[lightgray] p-[10px] rounded-[10px]">
       <View className="h-[20%] border-b-[1px] border-b-primary justify-center">
         <Text className="text-[22px] pl-[10px]">{item.title}</Text>
       </View>

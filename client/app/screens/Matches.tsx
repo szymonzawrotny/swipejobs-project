@@ -52,7 +52,7 @@ export default function Matches({ navigation }: any) {
   });
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
+      <SafeAreaView className="flex-1">
         <View className="bg-primary h-[50px] items-center justify-center">
           <Text className="text-white">
             swipe
@@ -60,10 +60,10 @@ export default function Matches({ navigation }: any) {
           </Text>
         </View>
         <ScrollView
-          className="h-[93%]"
-          contentContainerStyle={{ alignItems: 'center'}}
+          className="flex-1"
+          contentContainerStyle={{ alignItems: 'center' }}
         >
-          {elements && elements.length > 0 ? (
+          {mockJobsList && elements.length > 0 ? (
             elements
           ) : (
             <Text>no job offers for you</Text>
