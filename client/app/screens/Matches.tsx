@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, ScrollView, Button } from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import JobOffer from '@/components/JobOffer';
 
 export default function Matches({ navigation }: any) {
   const mockJobsList = [
     {
       id: 21,
-      title: 'job offer',
+      title: 'Material Handler',
     },
     {
       id: 37,
@@ -16,23 +17,53 @@ export default function Matches({ navigation }: any) {
       id: 12,
       title: 'job offer',
     },
+    {
+      id: 1,
+      title: 'job offer',
+    },
+    {
+      id: 2,
+      title: 'job offer',
+    },
+    {
+      id: 3,
+      title: 'job offer',
+    },
+    {
+      id: 4,
+      title: 'job offer',
+    },
+    {
+      id: 5,
+      title: 'job offer',
+    },
+    {
+      id: 6,
+      title: 'job offer',
+    },
+    {
+      id: 7,
+      title: 'job offer',
+    },
   ];
 
   const elements = mockJobsList.map((item) => {
-    return (
-      <View className="border-2 border-[red] mt-[50px]" key={item.id}>
-        <Button
-          title={`job offer: ${item.id}`}
-          onPress={() => navigation.navigate('OfferDetails', { id: item.id })}
-        />
-      </View>
-    );
+    return <JobOffer item={item} navigation={navigation} key={item.id} />;
   });
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <ScrollView>
-          {(elements && (elements.length > 0)) ? (
+        <View className="bg-primary h-[50px] items-center justify-center">
+          <Text className="text-white">
+            swipe
+            <Text className="font-bold">jobs</Text>
+          </Text>
+        </View>
+        <ScrollView
+          className="h-[93%]"
+          contentContainerStyle={{ alignItems: 'center'}}
+        >
+          {elements && elements.length > 0 ? (
             elements
           ) : (
             <Text>no job offers for you</Text>
