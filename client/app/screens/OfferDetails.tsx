@@ -1,9 +1,11 @@
 import { View, Text, Image, Pressable, ScrollView } from 'react-native';
 import ShiftDate from '@/components/matches/ShiftDate';
 import { Ionicons } from 'react-native-vector-icons';
+import { useUser } from '@/app/context/UserContext';
 
 export default function OfferDetails({ route, navigation }: any) {
   const { item } = route.params;
+  const { userData } = useUser();
 
   const acceptOffer = () => {
     console.log('accept');
@@ -19,7 +21,7 @@ export default function OfferDetails({ route, navigation }: any) {
         key={index}
         startDate={item.startDate}
         endDate={item.endDate}
-        styles='my-[0px]'
+        styles="my-[0px]"
       />
     );
   });
@@ -28,7 +30,7 @@ export default function OfferDetails({ route, navigation }: any) {
     <View className="flex-1 justify-center items-center bg-[lightgray]">
       <View className="bg-primary flex-row h-[50px] items-center justify-between w-full">
         <Text className="text-white ml-[15px]">swipejobs</Text>
-        <Text className="text-white mr-[15px]">Jim Ross</Text>
+        <Text className="text-white mr-[15px]">{`${userData?.firstName} ${userData?.lastName}`}</Text>
       </View>
       <View className="w-[90%] flex-1 rounded-[15px] my-[20px] bg-white">
         <Image

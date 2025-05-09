@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import UserInfo from '@/components/UserInfo';
+import { useUser } from '@/app/context/UserContext';
 
 export default function Profile() {
-  const [userData, setUserData] = useState<any>(null);
+  const { userData } = useUser();
 
   const details = [
     {
@@ -28,21 +28,6 @@ export default function Profile() {
     },
   ];
 
-  const fetchData = async () => {
-    const response = await fetch(
-      'https://test.swipejobs.com/api/worker/7f90df6e-b832-44e2-b624-3143d428001f/profile'
-    );
-
-    if (!response.ok) console.log('błąd pobierania danych');
-
-    const user = await response.json();
-    setUserData(user);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const elements = details.map((item) => {
     return <UserInfo title={item.title} value={item.value} key={item.title} />;
   });
@@ -65,7 +50,10 @@ export default function Profile() {
             <View className="relative top-[-35px]">
               <Text className="text-center text-[18px]">{`${userData.email}`}</Text>
             </View>
-            <ScrollView className="flex-1">
+            <ScrollView
+              className="flex-1"
+              contentContainerStyle={{ alignItems: 'center' }}
+            >
               {details && elements}
             </ScrollView>
           </View>

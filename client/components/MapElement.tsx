@@ -8,7 +8,6 @@ interface ObjectProps {
   longitudeDelta: number;
   title: string;
   desc: string;
-  id: string;
 }
 
 interface MapElementProps {
