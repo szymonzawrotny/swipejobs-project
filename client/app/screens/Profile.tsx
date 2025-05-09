@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import UserInfo from '@/components/UserInfo';
 
-export default function Profile({ navigation }: any) {
+export default function Profile() {
   const [userData, setUserData] = useState<any>(null);
 
   const details = [

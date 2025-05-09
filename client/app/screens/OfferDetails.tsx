@@ -19,7 +19,7 @@ export default function OfferDetails({ route, navigation }: any) {
         key={index}
         startDate={item.startDate}
         endDate={item.endDate}
-        styles={'my-[0px]'}
+        styles='my-[0px]'
       />
     );
   });
@@ -85,7 +85,6 @@ export default function OfferDetails({ route, navigation }: any) {
               onPress={() =>
                 navigation.navigate('Tabs', {
                   screen: 'Maps',
-                  params: { item },
                 })
               }
             >

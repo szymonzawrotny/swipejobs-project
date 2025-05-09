@@ -13,7 +13,7 @@ const JobOffer = ({ item, navigation }: JobOfferProps) => {
         key={index}
         startDate={item.startDate}
         endDate={item.endDate}
-        styles={''}
+        styles="my-[5px]"
       />
     );
   });
