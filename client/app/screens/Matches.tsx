@@ -1,54 +1,28 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Text, ScrollView, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import JobOffer from '@/components/JobOffer';
+import JobOffer from '@/components/matches/JobOffer';
 
 export default function Matches({ navigation }: any) {
-  const mockJobsList = [
-    {
-      id: 21,
-      title: 'Material Handler',
-    },
-    {
-      id: 37,
-      title: 'job offer',
-    },
-    {
-      id: 12,
-      title: 'job offer',
-    },
-    {
-      id: 1,
-      title: 'job offer',
-    },
-    {
-      id: 2,
-      title: 'job offer',
-    },
-    {
-      id: 3,
-      title: 'job offer',
-    },
-    {
-      id: 4,
-      title: 'job offer',
-    },
-    {
-      id: 5,
-      title: 'job offer',
-    },
-    {
-      id: 6,
-      title: 'job offer',
-    },
-    {
-      id: 7,
-      title: 'job offer',
-    },
-  ];
+  const [jobsList, setJobsList] = useState<any[]>([]);
 
-  const elements = mockJobsList.map((item) => {
-    return <JobOffer item={item} navigation={navigation} key={item.id} />;
+  const fetchData = async () => {
+    const response = await fetch(
+      'https://test.swipejobs.com/api/worker/7f90df6e-b832-44e2-b624-3143d428001f/matches'
+    );
+
+    if (!response.ok) console.log('błąd pobierania danych');
+
+    const list = await response.json();
+    setJobsList(list);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const elements = jobsList.map((item: any) => {
+    return <JobOffer item={item} navigation={navigation} key={item?.jobId} />;
   });
   return (
     <SafeAreaProvider>
@@ -63,7 +37,7 @@ export default function Matches({ navigation }: any) {
           className="flex-1"
           contentContainerStyle={{ alignItems: 'center' }}
         >
-          {mockJobsList && elements.length > 0 ? (
+          {jobsList && elements.length > 0 ? (
             elements
           ) : (
             <Text>no job offers for you</Text>
