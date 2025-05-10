@@ -1,8 +1,8 @@
 import { View, Text, Image, Pressable, ScrollView } from 'react-native';
-import ShiftDate from '@/components/matches/ShiftDate';
+import ShiftDate from '@/components/offerDetails/ShiftDate';
 import { Ionicons } from 'react-native-vector-icons';
 import { useUser } from '@/app/context/UserContext';
-import JobActionFeedback from '@/components/JobActionFeedback';
+import JobActionFeedback from '@/components/offerDetails/JobActionFeedback';
 
 export default function OfferDetails({ route, navigation }: any) {
   const { item } = route.params;
@@ -28,6 +28,7 @@ export default function OfferDetails({ route, navigation }: any) {
       } else {
         setMessage(`Failed to perform the operation: ${type}`);
       }
+
     } catch (error) {
       console.error('Błąd:', error);
     }
@@ -156,12 +157,14 @@ export default function OfferDetails({ route, navigation }: any) {
             styles={''}
             action={action}
             type={'reject'}
+            navigation={navigation}
           />
           <JobActionFeedback
             text="I'll Take it"
             styles={'bg-black'}
             action={action}
             type={'accept'}
+            navigation={navigation}
           />
         </View>
       </View>

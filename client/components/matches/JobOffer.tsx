@@ -1,5 +1,5 @@
 import { View, Button, Text, ScrollView } from 'react-native';
-import ShiftDate from '@/components/matches/ShiftDate';
+import ShiftDate from '@/components/offerDetails/ShiftDate';
 
 interface JobOfferProps {
   item: any;

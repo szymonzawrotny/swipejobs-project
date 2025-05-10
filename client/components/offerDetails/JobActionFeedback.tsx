@@ -4,23 +4,30 @@ import { useState } from 'react';
 interface JobActionFeedbackProps {
   text: string;
   styles: string;
-  action: (setMessage: (message: string) => void,type:string) => void;
-  type:string;
+  action: (setMessage: (message: string) => void, type: string) => void;
+  type: string;
+  navigation:any
 }
 
 export default function JobActionFeedback({
   text,
   styles,
   action,
-  type
+  type,
+  navigation
 }: JobActionFeedbackProps) {
   const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState<string>();
 
   const handleShowModal = async () => {
-    action(setMessage,type);
+    action(setMessage, type);
     setModalVisible(true);
-    setTimeout(() => setModalVisible(false), 2000);
+    setTimeout(() => {
+      navigation.navigate('Tabs', {
+        screen: 'Matches',
+      });
+      setModalVisible(false);
+    }, 2000);
   };
 
   return (
@@ -40,7 +47,9 @@ export default function JobActionFeedback({
       >
         <View className="flex-1 justify-start items-end mt-[60px] ">
           <View className="bg-[lightgreen] p-4 rounded-lg shadow-lg w-[50%] items-center">
-            <Text className="text-[14px] font-bold mb-2 text-white">{message}</Text>
+            <Text className="text-[14px] font-bold mb-2 text-white">
+              {message}
+            </Text>
           </View>
         </View>
       </Modal>

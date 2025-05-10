@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import MapElement from '@/components/MapElement';
+import MapElement from '@/components/map/MapElement';
 
 export default function Maps() {
   const mockData = [
