@@ -2,17 +2,35 @@ import { View, Text, Image, Pressable, ScrollView } from 'react-native';
 import ShiftDate from '@/components/matches/ShiftDate';
 import { Ionicons } from 'react-native-vector-icons';
 import { useUser } from '@/app/context/UserContext';
+import JobActionFeedback from '@/components/JobActionFeedback';
 
 export default function OfferDetails({ route, navigation }: any) {
   const { item } = route.params;
   const { userData } = useUser();
 
-  const acceptOffer = () => {
-    console.log('accept');
-  };
+  const action = async (
+    setMessage: (message: string) => void,
+    type: string
+  ) => {
+    try {
+      const response = await fetch(
+        `https://test.swipejobs.com/api/worker/${userData?.workerId}/job/${item?.jobId}/${type}`
+      );
+      if (!response.ok) {
+        console.error('Data download error');
+        return;
+      }
 
-  const rejectOffer = () => {
-    console.log('reject');
+      const message = await response.json();
+
+      if (message.success) {
+        setMessage(`successfully performed the operation: ${type}`);
+      } else {
+        setMessage(`Failed to perform the operation: ${type}`);
+      }
+    } catch (error) {
+      console.error('Błąd:', error);
+    }
   };
 
   const elements = item.shifts.map((item: any, index: number) => {
@@ -133,20 +151,18 @@ export default function OfferDetails({ route, navigation }: any) {
           </View>
         </View>
         <View className="h-[10%] flex-row justify-center items-center">
-          <Pressable
-            onPress={rejectOffer}
-            className="border-[1px] border-[lightgray] h-[80%] w-[40%] mr-[5px] rounded-[5px] justify-center items-center"
-          >
-            <Text className="text-[lightgray] text-[18px]">No Thanks</Text>
-          </Pressable>
-          <Pressable
-            onPress={acceptOffer}
-            className="border-[1px] border-[lightgray] h-[80%] w-[40%] ml-[5px] rounded-[5px] bg-black justify-center items-center"
-          >
-            <Text className="text-[lightgray] text-[18px]">
-              I&apos;ll Take it
-            </Text>
-          </Pressable>
+          <JobActionFeedback
+            text="No Thanks"
+            styles={''}
+            action={action}
+            type={'reject'}
+          />
+          <JobActionFeedback
+            text="I'll Take it"
+            styles={'bg-black'}
+            action={action}
+            type={'accept'}
+          />
         </View>
       </View>
     </View>

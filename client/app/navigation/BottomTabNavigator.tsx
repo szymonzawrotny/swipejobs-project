@@ -1,8 +1,8 @@
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Matches from '../screens/Matches';
-import Profile from '../screens/Profile';
-import Maps from '../screens/Maps';
+import Matches from '@/app/screens/Matches'
+import Profile from '@/app/screens/Profile';
+import Maps from '@/app/screens/Maps';
 import { Ionicons } from 'react-native-vector-icons';
 
 const Tab = createBottomTabNavigator();

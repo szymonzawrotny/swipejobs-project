@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import BottomTabNavigator from './BottomTabNavigator';
-import OfferDetails from '../screens/OfferDetails';
+import BottomTabNavigator from '@/app/navigation/BottomTabNavigator';
+import OfferDetails from '@/app/screens/OfferDetails';
 
 const Stack = createNativeStackNavigator();
 

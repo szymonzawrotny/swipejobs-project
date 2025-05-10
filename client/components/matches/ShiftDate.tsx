@@ -8,16 +8,16 @@ interface ShiftDateProps {
 }
 
 const ShiftDate = ({ startDate, endDate, styles }: ShiftDateProps) => {
-  const formattedStartDate = new Date(startDate).toLocaleString('pl-PL', {
+  const formattedStartDate = new Date(startDate).toLocaleString('en-US', {
     year: 'numeric',
-    month: '2-digit',
+    month: 'short',
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
   });
-  const formattedEndDate = new Date(startDate).toLocaleString('pl-PL', {
+  const formattedEndDate = new Date(startDate).toLocaleString('en-US', {
     year: 'numeric',
-    month: '2-digit',
+    month: 'short',
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
@@ -25,7 +25,7 @@ const ShiftDate = ({ startDate, endDate, styles }: ShiftDateProps) => {
   return (
     <View className={`bg-white rounded-[5px] ${styles}`}>
       <Text
-        className={`text-center ${styles}`}
+        className={`text-center text-[12px] ${styles}`}
       >{`${formattedStartDate} - ${formattedEndDate}`}</Text>
     </View>
   );
