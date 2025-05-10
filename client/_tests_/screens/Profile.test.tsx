@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import Profile from '@/app/screens/Profile';
-import { useUser } from '@/app/context/UserContext';
+import { useUser } from '@/context/UserContext';
 
 jest.mock('@/components/profile/UserInfo', () => {
   // eslint-disable-next-line react/display-name
@@ -11,7 +11,7 @@ jest.mock('@/components/profile/UserInfo', () => {
   };
 });
 
-jest.mock('@/app/context/UserContext');
+jest.mock('@/context/UserContext');
 
 const mockedUseUser = useUser as jest.Mock;
 

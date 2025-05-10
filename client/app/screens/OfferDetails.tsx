@@ -1,7 +1,7 @@
 import { View, Text, Image, Pressable, ScrollView } from 'react-native';
 import ShiftDate from '@/components/offerDetails/ShiftDate';
 import { Ionicons } from 'react-native-vector-icons';
-import { useUser } from '@/app/context/UserContext';
+import { useUser } from '@/context/UserContext';
 import JobActionFeedback from '@/components/offerDetails/JobActionFeedback';
 
 export default function OfferDetails({ route, navigation }: any) {
@@ -28,7 +28,6 @@ export default function OfferDetails({ route, navigation }: any) {
       } else {
         setMessage(`Failed to perform the operation: ${type}`);
       }
-
     } catch (error) {
       console.error('Błąd:', error);
     }
@@ -50,14 +49,14 @@ export default function OfferDetails({ route, navigation }: any) {
       <View className="bg-primary flex-row h-[50px] items-center justify-between w-full">
         <Text className="text-white ml-[15px]">
           swipe
-          <Text className='font-bold'>jobs</Text>
+          <Text className="font-bold">jobs</Text>
         </Text>
         <Text className="text-white mr-[15px]">{`${userData?.firstName} ${userData?.lastName}`}</Text>
       </View>
       <View className="w-[90%] flex-1 rounded-[15px] my-[20px] bg-white">
         <Image
           source={{ uri: item?.jobTitle?.imageUrl }}
-          className="w-full h-[160px] rounded-t-[15px]"
+          className="w-full h-[20vh] max-h-[160px] rounded-t-[15px]"
           resizeMode="cover"
         />
         <Text className="mt-[5px] ml-[15px] font-bold text-[20px]">
@@ -83,7 +82,7 @@ export default function OfferDetails({ route, navigation }: any) {
             <Ionicons name={'calendar'} size={26} color={'black'} />
           </View>
           <View className="flex-1">
-            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px]">
+            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px] text-[10px] ssm:text-[14px]">
               Shift Dates
             </Text>
             <ScrollView style={{ height: 100 }} nestedScrollEnabled={true}>
@@ -96,11 +95,11 @@ export default function OfferDetails({ route, navigation }: any) {
             <Ionicons name={'location'} size={26} color={'black'} />
           </View>
           <View className="flex-1">
-            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px]">
+            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px] text-[10px] ssm:text-[14px]">
               Location
             </Text>
-            <Text className="ml-[10px] text-[14px]">{`${item.company.address.formattedAddress}`}</Text>
-            <Text className="ml-[10px] text-[12px]">{`${item.milesToTravel.toFixed(
+            <Text className="ml-[10px] text-[10px] ssm:text-[14px]">{`${item.company.address.formattedAddress}`}</Text>
+            <Text className="ml-[10px] text-[8px] ssm:text-[12px]">{`${item.milesToTravel.toFixed(
               2
             )} miles from your job search location`}</Text>
           </View>
@@ -121,19 +120,24 @@ export default function OfferDetails({ route, navigation }: any) {
             <Ionicons name={'hammer'} size={26} color={'black'} />
           </View>
           <View className="flex-1">
-            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px]">
+            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px] text-[10px] ssm:text-[14px]">
               Requirements
             </Text>
             {item.requirements ? (
               <ScrollView>
                 {item.requirements.map((item: any) => (
-                  <Text className="ml-[10px]" key={item}>
+                  <Text
+                    className="ml-[10px] text-[10px] ssm:text-[14px]"
+                    key={item}
+                  >
                     {`-${item}`}
                   </Text>
                 ))}
               </ScrollView>
             ) : (
-              <Text className="ml-[10px]">No requirements needed</Text>
+              <Text className="ml-[10px] text-[10px] ssm:text-[14px]">
+                No requirements needed
+              </Text>
             )}
           </View>
         </View>
@@ -146,10 +150,12 @@ export default function OfferDetails({ route, navigation }: any) {
             />
           </View>
           <View className="flex-1">
-            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px]">
+            <Text className="font-bold ml-[10px] mt-[5px] mb-[0px] text-[10px] ssm:text-[14px]">
               Report to
             </Text>
-            <Text className="ml-[10px]">{`${item.company.reportTo.name} ${
+            <Text className="ml-[10px] text-[10px] ssm:text-[14px]">{`${
+              item.company.reportTo.name
+            } ${
               item.company.reportTo.phone ? item.company.reportTo.phone : ''
             }`}</Text>
           </View>

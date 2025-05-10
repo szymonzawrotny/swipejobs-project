@@ -1,6 +1,6 @@
 import RootNavigator from '@/app/navigation/RootNavigator';
 import '@/app/global.css';
-import { UserProvider } from '@/app/context/UserContext';
+import { UserProvider } from '@/context/UserContext';
 
 export default function App() {
   return (

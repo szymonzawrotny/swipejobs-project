@@ -1,6 +1,6 @@
 import { View, Text, ScrollView } from 'react-native';
 import UserInfo from '@/components/profile/UserInfo';
-import { useUser } from '@/app/context/UserContext';
+import { useUser } from '@/context/UserContext';
 
 export default function Profile() {
   const { userData } = useUser();

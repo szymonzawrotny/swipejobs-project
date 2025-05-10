@@ -22,7 +22,7 @@ export default function BottomTabNavigator() {
         name="Matches"
         component={Matches}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused, size }) => (
             <>
               <Ionicons
                 name={focused ? 'search' : 'search-outline'}
@@ -40,7 +40,7 @@ export default function BottomTabNavigator() {
         name="Maps"
         component={Maps}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused, size }) => (
             <>
               <Ionicons
                 name={focused ? 'map' : 'map-outline'}
@@ -58,7 +58,7 @@ export default function BottomTabNavigator() {
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused, size }) => (
             <>
               <Ionicons
                 name={focused ? 'person' : 'person-outline'}

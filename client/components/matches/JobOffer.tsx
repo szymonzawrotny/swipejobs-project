@@ -24,7 +24,7 @@ const JobOffer = ({ item, navigation }: JobOfferProps) => {
       </View>
       <View className="h-[25%] border-b-[1px] border-b-primary pl-[10px]">
         <View className="justify-center mt-[5px]">
-          <Text className="text-[18px]">{item.company.name}</Text>
+          <Text className="text-[16px] ssm:text-[18px]">{item.company.name}</Text>
         </View>
         <View className="flex-1 flex-row">
           <View className="flex-1">

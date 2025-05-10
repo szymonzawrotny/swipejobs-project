@@ -8,6 +8,13 @@ module.exports = {
       colors: {
         primary: '#31374d',
       },
+      screens: {
+        ssm: "380px",
+        sm: '640px',
+        md: '768px',
+        lg: '1000px',
+        xl: '1280px',
+      },
     },
   },
   plugins: [],
