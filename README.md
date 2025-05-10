@@ -33,9 +33,9 @@
 
 ### 3. Profile Screen
 - Displays worker’s profile information:
-  - Name, age, phone number
-  - Location and skill set
-  - License and certifications
+  - Name and phone number
+  - Email
+  - Location 
 - Used to understand job matching criteria
 
 ### 4. Map Screen
