@@ -15,7 +15,7 @@ const ShiftDate = ({ startDate, endDate, styles }: ShiftDateProps) => {
     hour: '2-digit',
     minute: '2-digit',
   });
-  const formattedEndDate = new Date(startDate).toLocaleString('en-US', {
+  const formattedEndDate = new Date(endDate).toLocaleString('en-US', {
     year: 'numeric',
     month: 'short',
     day: '2-digit',

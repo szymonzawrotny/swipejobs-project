@@ -25,6 +25,7 @@ const MapElement = ({ data }: MapElementProps) => {
         }}
         title={item.title}
         description={item.desc}
+        accessibilityLabel={item.title}
         key={index}
       />
     );
