@@ -4,7 +4,7 @@ export const fetchJobMatches = async () => {
   );
 
   if (!response.ok) {
-    console.log('Błąd pobierania danych');
+    console.log('Data download error');
     return [];
   }
 

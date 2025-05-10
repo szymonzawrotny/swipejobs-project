@@ -29,7 +29,7 @@ export default function OfferDetails({ route, navigation }: any) {
         setMessage(`Failed to perform the operation: ${type}`);
       }
     } catch (error) {
-      console.error('Błąd:', error);
+      console.error('error:', error);
     }
   };
 
