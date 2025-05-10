@@ -48,7 +48,10 @@ export default function OfferDetails({ route, navigation }: any) {
   return (
     <View className="flex-1 justify-center items-center bg-[lightgray]">
       <View className="bg-primary flex-row h-[50px] items-center justify-between w-full">
-        <Text className="text-white ml-[15px]">swipejobs</Text>
+        <Text className="text-white ml-[15px]">
+          swipe
+          <Text className='font-bold'>jobs</Text>
+        </Text>
         <Text className="text-white mr-[15px]">{`${userData?.firstName} ${userData?.lastName}`}</Text>
       </View>
       <View className="w-[90%] flex-1 rounded-[15px] my-[20px] bg-white">
