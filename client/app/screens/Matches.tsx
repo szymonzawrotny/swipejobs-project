@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { Text, ScrollView, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import JobOffer from '@/components/matches/JobOffer';
+import { JobMatchInterace } from '@/constants/JobMatchInterface';
 import { fetchJobMatches } from '@/services/matchesService';
 
 export default function Matches({ navigation }: any) {
-  const [jobsList, setJobsList] = useState<any[]>([]);
+  const [jobsList, setJobsList] = useState<JobMatchInterace[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +16,7 @@ export default function Matches({ navigation }: any) {
     fetchData();
   }, []);
 
-  const elements = jobsList.map((item: any) => {
+  const elements = jobsList.map((item: JobMatchInterace) => {
     return <JobOffer item={item} navigation={navigation} key={item?.jobId} />;
   });
   return (

@@ -2,9 +2,15 @@ import { View, Text, Image, Pressable, ScrollView } from 'react-native';
 import ShiftDate from '@/components/offerDetails/ShiftDate';
 import { Ionicons } from 'react-native-vector-icons';
 import { useUser } from '@/context/UserContext';
+import { ShiftDateInterface } from '@/constants/ShiftDateInterface';
 import JobActionFeedback from '@/components/offerDetails/JobActionFeedback';
 
-export default function OfferDetails({ route, navigation }: any) {
+interface OfferDetailsProps {
+  route: any;
+  navigation: any;
+}
+
+export default function OfferDetails({ route, navigation }: OfferDetailsProps) {
   const { item } = route.params;
   const { userData } = useUser();
 
@@ -33,16 +39,18 @@ export default function OfferDetails({ route, navigation }: any) {
     }
   };
 
-  const elements = item.shifts.map((item: any, index: number) => {
-    return (
-      <ShiftDate
-        key={index}
-        startDate={item.startDate}
-        endDate={item.endDate}
-        styles="my-[0px]"
-      />
-    );
-  });
+  const elements = item.shifts.map(
+    (item: ShiftDateInterface, index: number) => {
+      return (
+        <ShiftDate
+          key={index}
+          startDate={item.startDate}
+          endDate={item.endDate}
+          styles="my-[0px]"
+        />
+      );
+    }
+  );
 
   return (
     <View className="flex-1 justify-center items-center bg-[lightgray]">
@@ -125,10 +133,10 @@ export default function OfferDetails({ route, navigation }: any) {
             </Text>
             {item.requirements ? (
               <ScrollView>
-                {item.requirements.map((item: any) => (
+                {item.requirements.map((item: string[], index: number) => (
                   <Text
                     className="ml-[10px] text-[10px] ssm:text-[14px]"
-                    key={item}
+                    key={index}
                   >
                     {`-${item}`}
                   </Text>

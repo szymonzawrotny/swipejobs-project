@@ -1,22 +1,30 @@
 import { View, Button, Text, ScrollView } from 'react-native';
 import ShiftDate from '@/components/offerDetails/ShiftDate';
+import { JobMatchInterace } from '@/constants/JobMatchInterface';
+import { ShiftDateInterface } from '@/constants/ShiftDateInterface';
+import { NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '@/constants/RootStackParamList';
+
+type Navigation = NavigationProp<RootStackParamList>;
 
 interface JobOfferProps {
-  item: any;
-  navigation: any;
+  item: JobMatchInterace;
+  navigation: Navigation;
 }
 
 const JobOffer = ({ item, navigation }: JobOfferProps) => {
-  const elements = item.shifts.map((item: any, index: number) => {
-    return (
-      <ShiftDate
-        key={index}
-        startDate={item.startDate}
-        endDate={item.endDate}
-        styles="my-[5px]"
-      />
-    );
-  });
+  const elements = item.shifts.map(
+    (item: ShiftDateInterface, index: number) => {
+      return (
+        <ShiftDate
+          key={index}
+          startDate={item.startDate}
+          endDate={item.endDate}
+          styles="my-[5px]"
+        />
+      );
+    }
+  );
   return (
     <View className="mt-[50px] w-[95%] h-[45vh] mb-[10px] bg-[lightgray] p-[10px] rounded-[10px]">
       <View className="h-[20%] border-b-[1px] border-b-primary justify-center">
@@ -24,7 +32,9 @@ const JobOffer = ({ item, navigation }: JobOfferProps) => {
       </View>
       <View className="h-[25%] border-b-[1px] border-b-primary pl-[10px]">
         <View className="justify-center mt-[5px]">
-          <Text className="text-[16px] ssm:text-[18px]">{item.company.name}</Text>
+          <Text className="text-[16px] ssm:text-[18px]">
+            {item.company.name}
+          </Text>
         </View>
         <View className="flex-1 flex-row">
           <View className="flex-1">

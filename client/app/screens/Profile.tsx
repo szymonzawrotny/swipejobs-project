@@ -2,10 +2,15 @@ import { View, Text, ScrollView } from 'react-native';
 import UserInfo from '@/components/profile/UserInfo';
 import { useUser } from '@/context/UserContext';
 
+interface DetailsInterface {
+  title: string;
+  value: string | number | undefined;
+}
+
 export default function Profile() {
   const { userData } = useUser();
 
-  const details = [
+  const details: DetailsInterface[] = [
     {
       title: 'Address',
       value: userData?.address?.formattedAddress,
@@ -28,7 +33,7 @@ export default function Profile() {
     },
   ];
 
-  const elements = details.map((item) => {
+  const elements = details.map((item: DetailsInterface) => {
     return <UserInfo title={item.title} value={item.value} key={item.title} />;
   });
   return (
